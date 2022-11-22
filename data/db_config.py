@@ -25,18 +25,41 @@ def create_table(conn, create_table_sql):
 def main():
     database = r"./data/todolist_python.db"
 
-    sql_create_users_table = """ CREATE TABLE IF NOT EXISTS users (
-                                        id integer PRIMARY KEY,
-                                        username text NOT NULL,
-                                        password text NOT NULL
-                                    ); """
+    sql_create_users_table = """CREATE TABLE IF NOT EXISTS users (
+                                    id integer PRIMARY KEY AUTOINCREMENT,
+                                    username text NOT NULL,
+                                    password text NOT NULL
+                            ); """
 
     sql_create_tasks_table = """CREATE TABLE IF NOT EXISTS tasks (
+                                    id integer PRIMARY KEY AUTOINCREMENT,
+                                    user integer NOT NULL,
+                                    title text NOT NULL,
+                                    description text NOT NULL,
+                                    priority integer NOT NULL,
+                                    due_date text NOT NULL,
+                                    FOREIGN KEY (priority) REFERENCES priorities(id),
+                                    FOREIGN KEY (user) REFERENCES users(id)
+                            );"""
+
+    sql_create_priorities_table = """CREATE TABLE IF NOT EXISTS priorities (
                                     id integer PRIMARY KEY,
-                                    task text NOT NULL,
-                                    status text NOT NULL,
-                                    user_id integer NOT NULL,
-                                    FOREIGN KEY (user_id) REFERENCES users (id)
+                                    priority text NOT NULL
                                 );"""
 
     conn = connection()
+
+    if conn is not None:
+        # create users table
+        create_table(conn, sql_create_users_table)
+        # create tasks table
+        create_table(conn, sql_create_tasks_table)
+        # create priorities table
+        create_table(conn, sql_create_priorities_table)
+        print("Database created successfully")
+    else:
+        print("Error! cannot create the database connection.")
+
+
+if __name__ == '__main__':
+    main()
