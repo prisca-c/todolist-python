@@ -1,5 +1,5 @@
 from tkinter import Tk
-from data.db_config import main
+from data.db_config import create_main_tables
 
 
 class Main:
@@ -8,7 +8,7 @@ class Main:
         master.title("My ToDo List")
         master.geometry("1280x720")
 
-        self.db = main()
+        create_main_tables()
 
 
 root = Tk()

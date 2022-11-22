@@ -22,7 +22,7 @@ def create_table(conn, create_table_sql):
         print(e)
 
 
-def main():
+def create_main_tables():
     database = r"./data/todolist_python.db"
 
     sql_create_users_table = """CREATE TABLE IF NOT EXISTS users (
@@ -62,4 +62,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    create_main_tables()
