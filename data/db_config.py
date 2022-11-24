@@ -7,7 +7,7 @@ def connection():
     conn = None
     try:
         conn = sqlite3.connect(r"./data/todolist_python.db")
-        print(sqlite3.version)
+        #  print(sqlite3.version)
     except Error as e:
         print(e)
     return conn
@@ -27,7 +27,7 @@ def create_main_tables():
 
     sql_create_users_table = """CREATE TABLE IF NOT EXISTS users (
                                     id integer PRIMARY KEY AUTOINCREMENT,
-                                    username text NOT NULL,
+                                    username text NOT NULL UNIQUE,
                                     password text NOT NULL
                             ); """
 
