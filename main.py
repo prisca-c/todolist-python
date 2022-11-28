@@ -6,8 +6,9 @@ from components.connect import Login
 class Main:
     def __init__(self, master):
         self.master = master
-        master.title("My ToDo List")
+        master.title("TODO")
         master.geometry("1280x720")
+        master.configure(bg="white")
 
         create_main_tables()
         #  Button(master, text="Create Account", command=main).pack()
