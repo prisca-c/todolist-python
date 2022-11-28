@@ -1,4 +1,4 @@
-from tkinter import Tk
+from tkinter import Tk, CENTER, Canvas, Frame
 from data.db_config import create_main_tables
 from components.connect import Login
 
@@ -16,5 +16,6 @@ class Main:
 
 
 root = Tk()
+root.iconbitmap("assets/icon.ico")
 app = Main(root)
 root.mainloop()
