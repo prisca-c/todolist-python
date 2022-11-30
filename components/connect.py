@@ -13,6 +13,7 @@ def handle_create_user(master, username, password):
 class Login:
 
     def __init__(self, master):
+        
         Label(master, text="TODO !", bd=20, font=('arial', 20, 'bold')
               , fg="white", bg="#5fce9c").pack(fill=X)
 
@@ -34,9 +35,9 @@ class Login:
         buttons.configure(bg="white")
 
         #  Button that will check if the user exists in the database
-        Button(buttons, text="Login", bg="#5fce9c", width=15, height=1,
+        Button(buttons, text="Login", bg="#5fce9c", width=16, height=1,
                command=lambda: check_user(username.get(), password.get())).pack()
-        Button(buttons, text="Create Account", bg="#e8c976", width=15, height=1,
+        Button(buttons, text="Create Account", bg="#e8c976", width=16, height=1,
                command=lambda: CreateAccount(master)).pack(pady=10)
 
 

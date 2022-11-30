@@ -1,6 +1,7 @@
 from tkinter import Tk, CENTER, Canvas, Frame
 from data.db_config import create_main_tables
 from components.connect import Login
+from components.dashboard.dashboard import Dashboard
 
 
 class Main:
@@ -12,7 +13,9 @@ class Main:
 
         create_main_tables()
         #  Button(master, text="Create Account", command=main).pack()
-        Login(master)
+        
+        #  Login(master)
+        Dashboard(master)
 
 
 root = Tk()
