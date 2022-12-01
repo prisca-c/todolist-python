@@ -12,15 +12,13 @@ def create_task(task):
     return cur.lastrowid
 
 
-def main():
-    #  Create a new task
-    with connection():
+def select_all_tasks(user):
+    """ Query all rows in the tasks table """
+    conn = connection()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM tasks WHERE user = ?", (user,))
 
-        task = (1, 'Test', 'This is a test', 1, '2023-01-01')
+    rows = cur.fetchall()
 
-        create_task(task)
-        print("Task created successfully: ", task)
-
-
-if __name__ == '__main__':
-    main()
+    for row in rows:
+        print(row)
